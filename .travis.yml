@@ -1,0 +1,18 @@
+# Build Config for WUB Result Bot on Travis-CI
+
+language: python
+
+os:
+    - linux
+
+python:
+    - 3.8
+
+cache: pip
+
+script: flask test
+
+before_script:
+    - python3 -m pip install -r requirements.txt
+    - export FLASK_APP="$TRAVIS_BUILD_DIR/app.py"
+    - export FLASK_DEBUG=1
